@@ -1,0 +1,12 @@
+services:
+  greenplum:
+    image: greenplum-db/gpdb6-dev:latest
+    container_name: greenplum
+    ports:
+      - "5432:5432"
+    environment:
+      - GPUSER=gpadmin
+      - GPPASSWORD=pivotal
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    privileged: true  # требуется для запуска сегментов Greenplum

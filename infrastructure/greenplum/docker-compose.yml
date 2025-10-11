@@ -1,0 +1,12 @@
+services:
+  postgres:
+    image: postgres:16          # ← измени на 16
+    container_name: dwh-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: gpadmin
+      POSTGRES_PASSWORD: pivotal
+      POSTGRES_DB: iot_dwh
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
